@@ -292,6 +292,116 @@
       gap: 14px;
     }
 
+    .soporte-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .panel-soporte {
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: 22px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+      display: grid;
+      gap: 16px;
+    }
+
+    .panel-soporte h3,
+    .panel-soporte p,
+    .panel-soporte h4 {
+      margin: 0;
+    }
+
+    .faq-lista {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-boton {
+      width: 100%;
+      justify-content: flex-start;
+      text-align: left;
+      border-radius: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--borde);
+      background: var(--seccion);
+      color: var(--texto);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .faq-boton:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--acento) 28%, var(--borde));
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .chat-ventana {
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 16px;
+      background: linear-gradient(180deg, #ffffff, var(--seccion));
+      display: grid;
+      gap: 12px;
+      min-height: 230px;
+    }
+
+    .burbuja {
+      max-width: 90%;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 0.96rem;
+    }
+
+    .burbuja.usuario {
+      margin-left: auto;
+      background: color-mix(in srgb, var(--acento) 14%, white);
+      color: var(--texto);
+    }
+
+    .burbuja.ia {
+      background: #ffffff;
+      border: 1px solid var(--borde);
+      color: #1e293b;
+    }
+
+    .reserva-formulario {
+      display: grid;
+      gap: 14px;
+    }
+
+    .campos-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .campo textarea,
+    .campo select {
+      width: 100%;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      color: var(--texto);
+      background: #fff;
+      resize: vertical;
+    }
+
+    .ayuda-campo {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .mensaje-formulario {
+      min-height: 1.3em;
+      color: #b91c1c;
+      font-size: 0.92rem;
+    }
+
     .item-confianza {
       background: #fff;
       border: 1px solid var(--borde);
@@ -566,6 +676,15 @@
       .testimonios {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+
+      .soporte-grid {
+        grid-template-columns: 0.92fr 1.08fr;
+        align-items: start;
+      }
+
+      .campos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -743,6 +862,74 @@
       </div>
     </section>
 
+    <section id="reserva" class="fondo-gris" aria-labelledby="titulo-reserva">
+      <div class="contenedor">
+        <h2 id="titulo-reserva">Orientación automática y reserva directa</h2>
+        <p class="texto-seccion">Podés resolver dudas frecuentes en segundos y, si querés avanzar, completar tu reserva para enviarla directo por WhatsApp con todos los datos necesarios.</p>
+
+        <div class="soporte-grid">
+          <article class="panel-soporte" aria-labelledby="titulo-chat-ia">
+            <h3 id="titulo-chat-ia">Asistente de IA con respuestas frecuentes</h3>
+            <p class="texto-seccion">Elegí una pregunta frecuente y el asistente responderá en base a la información disponible en esta página.</p>
+
+            <div class="faq-lista" aria-label="Preguntas frecuentes automáticas">
+              <button class="faq-boton" type="button" data-faq-key="situacion">No sé si lo que vivo encaja en violencia psicológica o invisible.</button>
+              <button class="faq-boton" type="button" data-faq-key="pruebas">¿Qué pruebas conviene guardar desde ahora?</button>
+              <button class="faq-boton" type="button" data-faq-key="guia">¿Qué incluye la guía personalizada paso a paso?</button>
+              <button class="faq-boton" type="button" data-faq-key="entrevista">¿Qué se define en la entrevista 1 a 1?</button>
+              <button class="faq-boton" type="button" data-faq-key="reserva">¿Cómo reservo y cómo se envía mi información?</button>
+            </div>
+
+            <div class="chat-ventana" id="chat-faq" aria-live="polite">
+              <div class="burbuja ia">Puedo responder preguntas frecuentes sobre la guía, la entrevista, la documentación útil y la forma de reservar. Elegí una opción para empezar.</div>
+            </div>
+          </article>
+
+          <article class="panel-soporte" aria-labelledby="titulo-form-reserva">
+            <h3 id="titulo-form-reserva">Formulario de reserva</h3>
+            <p class="texto-seccion">Completá tus datos y al confirmar se abrirá WhatsApp con el mensaje listo para enviar.</p>
+
+            <form class="reserva-formulario" id="form-reserva">
+              <div class="campos-grid">
+                <div class="campo">
+                  <label for="nombre-apellido">Nombre y apellido</label>
+                  <input id="nombre-apellido" name="nombre" type="text" autocomplete="name" placeholder="Ej.: Ana Pérez">
+                </div>
+                <div class="campo">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="Ej.: nombre@email.com">
+                </div>
+                <div class="campo">
+                  <label for="telefono">Número de teléfono</label>
+                  <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="Ej.: 2494 00 0000">
+                </div>
+                <div class="campo">
+                  <label for="servicio-reserva">Quiero reservar</label>
+                  <select id="servicio-reserva" name="servicio">
+                    <option value="">Seleccioná una opción</option>
+                    <option value="Guía personalizada">Guía personalizada</option>
+                    <option value="Entrevista 1 a 1">Entrevista 1 a 1</option>
+                    <option value="PDF + 1 a 1 conmigo">PDF + 1 a 1 conmigo</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="campo">
+                <label for="asunto-caso">Asunto o caso</label>
+                <textarea id="asunto-caso" name="asunto" rows="5" placeholder="Contá brevemente tu situación para llegar a la consulta con mejor contexto."></textarea>
+                <div class="ayuda-campo">Tu resumen se incluirá en el mensaje que se abrirá por WhatsApp.</div>
+              </div>
+
+              <div class="panel-acciones">
+                <button class="boton boton-principal" type="submit">Enviar por WhatsApp</button>
+              </div>
+              <p class="mensaje-formulario" id="mensaje-reserva" aria-live="polite"></p>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="cta-final" id="contacto" aria-labelledby="titulo-cta-final">
       <div class="contenedor entrada delay-2">
         <h2 id="titulo-cta-final">No tenés que atravesar esto sin entender qué está pasando ni cómo actuar.</h2>
@@ -841,6 +1028,18 @@
       var listaReciente = document.getElementById("lista-reciente");
       var botonExportar = document.getElementById("exportar-analytics");
       var botonReiniciar = document.getElementById("reiniciar-analytics");
+      var faqBotones = document.querySelectorAll(".faq-boton");
+      var chatFaq = document.getElementById("chat-faq");
+      var formularioReserva = document.getElementById("form-reserva");
+      var mensajeReserva = document.getElementById("mensaje-reserva");
+      var baseWhatsApp = "https://wa.me/5492494284798?text=";
+      var respuestasFaq = {
+        situacion: "Si vivís manipulación, presión constante, control, confusión o desgaste emocional, puede haber indicadores de violencia psicológica o invisible. La propuesta de Violencia Invisible es ayudarte a ordenar lo que pasa y entender qué elementos son relevantes antes de tomar decisiones legales.",
+        pruebas: "Conviene guardar audios, mensajes, correos, capturas, fechas, pedidos realizados y cualquier registro que muestre patrones de manipulación o presión. La guía y la entrevista están pensadas justamente para identificar qué sirve y cómo conservarlo sin perjudicar tu posición.",
+        guia: "La guía personalizada paso a paso se arma a partir de tu audio. Incluye qué es importante en el caso, qué pruebas guardar, qué pedir y cuáles son los pasos concretos para avanzar. El esquema de pago informado es 50% al iniciar y 50% al recibir la guía.",
+        entrevista: "En la entrevista 1 a 1 se analizan prioridades, primeros pasos legales, cómo presentar pedidos y un plan concreto para avanzar. Es un espacio de 30 minutos para ordenar tu situación con claridad y enfoque práctico.",
+        reserva: "Completás el formulario con tus datos, elegís el servicio y resumís tu caso. Al confirmar, se abre WhatsApp con toda la información lista para enviar, para que la reserva quede más clara desde el primer contacto."
+      };
 
       function estadoInicial() {
         return {
@@ -935,6 +1134,18 @@
         guardarAnalytics(analytics);
       }
 
+      function agregarBurbuja(texto, clase) {
+        var nodo = document.createElement("div");
+        nodo.className = "burbuja " + clase;
+        nodo.textContent = texto;
+        chatFaq.appendChild(nodo);
+        chatFaq.scrollTop = chatFaq.scrollHeight;
+      }
+
+      function validarTexto(valor) {
+        return String(valor || "").trim();
+      }
+
       function abrirDialogo() {
         panel.classList.add("visible");
         panel.setAttribute("aria-hidden", "false");
@@ -955,6 +1166,16 @@
       whatsappLinks.forEach(function (link) {
         link.addEventListener("click", function () {
           registrarClickWhatsApp(link.dataset.whatsappSource || link.getAttribute("aria-label") || "WhatsApp");
+        });
+      });
+
+      faqBotones.forEach(function (boton) {
+        boton.addEventListener("click", function () {
+          var clave = boton.dataset.faqKey;
+          agregarBurbuja(boton.textContent, "usuario");
+          window.setTimeout(function () {
+            agregarBurbuja(respuestasFaq[clave], "ia");
+          }, 180);
         });
       });
 
@@ -1004,6 +1225,36 @@
       botonReiniciar.addEventListener("click", function () {
         localStorage.removeItem(STORAGE_KEY);
         renderizarAnalytics();
+      });
+
+      formularioReserva.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+
+        var nombre = validarTexto(document.getElementById("nombre-apellido").value);
+        var email = validarTexto(document.getElementById("email").value);
+        var telefono = validarTexto(document.getElementById("telefono").value);
+        var servicio = validarTexto(document.getElementById("servicio-reserva").value);
+        var asunto = validarTexto(document.getElementById("asunto-caso").value);
+
+        if (!nombre || !email || !telefono || !servicio || !asunto) {
+          mensajeReserva.textContent = "Completá todos los campos antes de enviar la reserva.";
+          return;
+        }
+
+        mensajeReserva.textContent = "";
+
+        var mensaje = [
+          "Hola, quiero reservar una consulta en Violencia Invisible.",
+          "",
+          "Nombre y apellido: " + nombre,
+          "Email: " + email,
+          "Número de teléfono: " + telefono,
+          "Servicio elegido: " + servicio,
+          "Asunto o caso: " + asunto
+        ].join("\n");
+
+        registrarClickWhatsApp("Formulario reserva");
+        window.open(baseWhatsApp + encodeURIComponent(mensaje), "_blank", "noopener,noreferrer");
       });
     })();
 
