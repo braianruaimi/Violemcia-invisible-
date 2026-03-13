@@ -375,6 +375,160 @@
       border: 0;
     }
 
+    .boton-panel {
+      position: fixed;
+      left: 10px;
+      bottom: 12px;
+      z-index: 35;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(15, 23, 42, 0.18);
+      backdrop-filter: blur(6px);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      box-shadow: none;
+    }
+
+    .boton-panel:hover,
+    .boton-panel:focus-visible {
+      color: rgba(15, 23, 42, 0.55);
+      border-color: rgba(15, 23, 42, 0.14);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .panel-ceo {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      padding: 18px;
+      background: rgba(15, 23, 42, 0.48);
+      align-items: end;
+      justify-content: start;
+    }
+
+    .panel-ceo.visible {
+      display: flex;
+    }
+
+    .panel-ceo-contenido {
+      width: min(420px, 100%);
+      max-height: min(82vh, 720px);
+      overflow: auto;
+      background: #ffffff;
+      border: 1px solid var(--borde);
+      border-radius: 20px;
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.22);
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .panel-ceo-encabezado {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .panel-ceo-encabezado h3,
+    .panel-ceo-encabezado p {
+      margin: 0;
+    }
+
+    .cerrar-panel {
+      border: 1px solid var(--borde);
+      background: #fff;
+      color: var(--texto);
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .campo {
+      display: grid;
+      gap: 8px;
+    }
+
+    .campo label {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .campo input {
+      width: 100%;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      color: var(--texto);
+    }
+
+    .mensaje-panel {
+      min-height: 1.3em;
+      color: #b91c1c;
+      font-size: 0.92rem;
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mini-tarjeta {
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      background: var(--seccion);
+      padding: 14px;
+    }
+
+    .mini-tarjeta strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-top: 6px;
+    }
+
+    .lista-analytics {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .lista-analytics li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .lista-analytics span {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .panel-acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .panel-nota {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .entrada {
       opacity: 0;
       transform: translateY(18px);
@@ -424,13 +578,19 @@
         transition: none !important;
       }
     }
+
+    @media (max-width: 420px) {
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="topbar" aria-label="Navegación principal">
     <div class="contenedor topbar-inner">
       <div class="marca">Violencia Invisible</div>
-      <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" aria-label="Reservar consulta por WhatsApp">
+      <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" aria-label="Reservar consulta por WhatsApp" data-whatsapp-source="Header">
         Reservar consulta
       </a>
     </div>
@@ -444,7 +604,7 @@
           <p class="slogan">Violencia sin género. Leyes claras. Pasos y voz para quienes no pueden gritar.</p>
           <p class="intro">Muchas personas viven manipulación, presión psicológica o violencia invisible sin saber cómo nombrarlo ni cómo actuar. Esta consultoría te brinda claridad para entender tu situación antes de dar pasos legales.</p>
           <div class="acciones">
-            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Reservar consulta por WhatsApp</a>
+            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Hero principal">Reservar consulta por WhatsApp</a>
             <a class="boton boton-secundario" href="#servicios">Ver opciones de asesoramiento</a>
           </div>
         </div>
@@ -506,7 +666,7 @@
             <span class="etiqueta-precio">$30.000</span>
             <p>Enviás un audio explicando tu situación y recibís el mismo día una guía escrita con lo importante del caso, las pruebas que conviene guardar, qué pedir y pasos concretos para avanzar.</p>
             <p class="pago"><strong>Pago:</strong> 50% al iniciar y 50% al recibir la guía.</p>
-            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Solicitar guía</a>
+            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio guía">Solicitar guía</a>
           </article>
 
           <article class="tarjeta" aria-labelledby="servicio-entrevista">
@@ -514,7 +674,7 @@
             <span class="etiqueta-precio">$50.000</span>
             <p>Durante 30 minutos analizamos tu situación y definimos prioridades, primeros pasos legales, cómo presentar pedidos y un plan concreto para avanzar.</p>
             <p class="pago"><strong>Pago:</strong> 50% para reservar y 50% al finalizar.</p>
-            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Reservar entrevista</a>
+            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio entrevista">Reservar entrevista</a>
           </article>
 
           <article class="tarjeta" aria-labelledby="servicio-libro">
@@ -522,7 +682,7 @@
             <span class="etiqueta-precio">$30.000</span>
             <p>Un PDF que explica leyes y derechos, patrones de manipulación, tipos de violencia psicológica y cómo actuar sin perjudicar tu posición legal.</p>
             <p class="pago"><strong>Formato:</strong> entrega digital.</p>
-            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Comprar libro</a>
+            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio libro">Comprar libro</a>
           </article>
         </div>
       </div>
@@ -587,7 +747,7 @@
       <div class="contenedor entrada delay-2">
         <h2 id="titulo-cta-final">No tenés que atravesar esto sin entender qué está pasando ni cómo actuar.</h2>
         <p>Reservá tu espacio por WhatsApp y recibí orientación clara para dar los próximos pasos con mayor seguridad.</p>
-        <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp ahora</a>
+        <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="CTA final">Hablar por WhatsApp ahora</a>
       </div>
     </section>
   </main>
@@ -599,7 +759,7 @@
     </div>
   </footer>
 
-  <a class="wsp-flotante" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp para consulta">
+  <a class="wsp-flotante" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp para consulta" data-whatsapp-source="Botón flotante">
     <span>WhatsApp</span>
     <svg width="27" height="27" viewBox="0 0 32 32" fill="none" aria-hidden="true">
       <path d="M27.15 4.8A15.9 15.9 0 0 0 16.03.03C7.3.03.2 7.13.2 15.87c0 2.8.73 5.55 2.12 7.97L0 32l8.38-2.2a15.84 15.84 0 0 0 7.65 1.96h.01c8.73 0 15.83-7.1 15.83-15.84 0-4.23-1.65-8.2-4.72-11.12z" fill="currentColor"/>
@@ -607,7 +767,246 @@
     </svg>
   </a>
 
+  <button class="boton boton-panel" type="button" id="abrir-panel-ceo" aria-haspopup="dialog" aria-controls="panel-ceo" aria-label="Abrir panel CEO">
+    Panel CEO
+  </button>
+
+  <div class="panel-ceo" id="panel-ceo" aria-hidden="true">
+    <div class="panel-ceo-contenido" role="dialog" aria-modal="true" aria-labelledby="panel-ceo-titulo">
+      <div class="panel-ceo-encabezado">
+        <div>
+          <h3 id="panel-ceo-titulo">Panel CEO</h3>
+          <p>Seguimiento local de conversiones por WhatsApp.</p>
+        </div>
+        <button class="cerrar-panel" type="button" id="cerrar-panel-ceo" aria-label="Cerrar panel">×</button>
+      </div>
+
+      <form id="form-acceso-ceo">
+        <div class="campo">
+          <label for="clave-ceo">Contraseña</label>
+          <input id="clave-ceo" name="clave" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Ingresá la contraseña">
+        </div>
+        <div class="panel-acciones">
+          <button class="boton boton-principal" type="submit">Ingresar</button>
+        </div>
+        <p class="mensaje-panel" id="mensaje-acceso" aria-live="polite"></p>
+      </form>
+
+      <section id="contenido-analytics" hidden>
+        <div class="panel-grid">
+          <div class="mini-tarjeta">
+            Total de clics
+            <strong id="metric-total">0</strong>
+          </div>
+          <div class="mini-tarjeta">
+            Último clic
+            <strong id="metric-ultimo">Sin datos</strong>
+          </div>
+        </div>
+
+        <div>
+          <h4>Botones con más conversiones</h4>
+          <ul class="lista-analytics" id="lista-fuentes"></ul>
+        </div>
+
+        <div>
+          <h4>Actividad reciente</h4>
+          <ul class="lista-analytics" id="lista-reciente"></ul>
+        </div>
+
+        <div class="panel-acciones">
+          <button class="boton boton-secundario" type="button" id="exportar-analytics">Exportar datos</button>
+          <button class="boton boton-secundario" type="button" id="reiniciar-analytics">Reiniciar métricas</button>
+        </div>
+        <p class="panel-nota">Los datos se guardan en este navegador y dispositivo. No se envían a servidores externos.</p>
+      </section>
+    </div>
+  </div>
+
   <script>
+    (function () {
+      var CLAVE_PANEL = "1234";
+      var STORAGE_KEY = "violenciaInvisibleAnalytics";
+      var whatsappLinks = document.querySelectorAll('a[href="https://wa.me/5492494284798"]');
+      var abrirPanel = document.getElementById("abrir-panel-ceo");
+      var cerrarPanel = document.getElementById("cerrar-panel-ceo");
+      var panel = document.getElementById("panel-ceo");
+      var formularioAcceso = document.getElementById("form-acceso-ceo");
+      var campoClave = document.getElementById("clave-ceo");
+      var mensajeAcceso = document.getElementById("mensaje-acceso");
+      var contenidoAnalytics = document.getElementById("contenido-analytics");
+      var totalEl = document.getElementById("metric-total");
+      var ultimoEl = document.getElementById("metric-ultimo");
+      var listaFuentes = document.getElementById("lista-fuentes");
+      var listaReciente = document.getElementById("lista-reciente");
+      var botonExportar = document.getElementById("exportar-analytics");
+      var botonReiniciar = document.getElementById("reiniciar-analytics");
+
+      function estadoInicial() {
+        return {
+          total: 0,
+          sources: {},
+          events: []
+        };
+      }
+
+      function leerAnalytics() {
+        try {
+          var guardado = localStorage.getItem(STORAGE_KEY);
+          if (!guardado) {
+            return estadoInicial();
+          }
+
+          var datos = JSON.parse(guardado);
+          return {
+            total: typeof datos.total === "number" ? datos.total : 0,
+            sources: datos.sources && typeof datos.sources === "object" ? datos.sources : {},
+            events: Array.isArray(datos.events) ? datos.events : []
+          };
+        } catch (error) {
+          return estadoInicial();
+        }
+      }
+
+      function guardarAnalytics(datos) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(datos));
+      }
+
+      function formatearFecha(valor) {
+        if (!valor) {
+          return "Sin datos";
+        }
+
+        return new Date(valor).toLocaleString("es-AR", {
+          dateStyle: "short",
+          timeStyle: "short"
+        });
+      }
+
+      function renderizarAnalytics() {
+        var analytics = leerAnalytics();
+        totalEl.textContent = String(analytics.total);
+
+        if (analytics.events.length > 0) {
+          ultimoEl.textContent = formatearFecha(analytics.events[0].at);
+        } else {
+          ultimoEl.textContent = "Sin datos";
+        }
+
+        var fuentes = Object.entries(analytics.sources).sort(function (a, b) {
+          return b[1] - a[1];
+        });
+
+        listaFuentes.innerHTML = "";
+        if (fuentes.length === 0) {
+          listaFuentes.innerHTML = '<li><span>Todavía no hay clics registrados.</span><strong>0</strong></li>';
+        } else {
+          fuentes.forEach(function (fuente) {
+            var item = document.createElement("li");
+            item.innerHTML = "<span>" + fuente[0] + "</span><strong>" + fuente[1] + "</strong>";
+            listaFuentes.appendChild(item);
+          });
+        }
+
+        listaReciente.innerHTML = "";
+        if (analytics.events.length === 0) {
+          listaReciente.innerHTML = '<li><span>Sin actividad reciente.</span><strong>-</strong></li>';
+        } else {
+          analytics.events.slice(0, 8).forEach(function (evento) {
+            var item = document.createElement("li");
+            item.innerHTML = "<span>" + evento.source + "</span><strong>" + formatearFecha(evento.at) + "</strong>";
+            listaReciente.appendChild(item);
+          });
+        }
+      }
+
+      function registrarClickWhatsApp(origen) {
+        var analytics = leerAnalytics();
+        var source = origen || "WhatsApp";
+
+        analytics.total += 1;
+        analytics.sources[source] = (analytics.sources[source] || 0) + 1;
+        analytics.events.unshift({
+          source: source,
+          at: new Date().toISOString()
+        });
+        analytics.events = analytics.events.slice(0, 30);
+
+        guardarAnalytics(analytics);
+      }
+
+      function abrirDialogo() {
+        panel.classList.add("visible");
+        panel.setAttribute("aria-hidden", "false");
+        mensajeAcceso.textContent = "";
+        campoClave.value = "";
+        contenidoAnalytics.hidden = true;
+        formularioAcceso.hidden = false;
+        window.setTimeout(function () {
+          campoClave.focus();
+        }, 40);
+      }
+
+      function cerrarDialogo() {
+        panel.classList.remove("visible");
+        panel.setAttribute("aria-hidden", "true");
+      }
+
+      whatsappLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          registrarClickWhatsApp(link.dataset.whatsappSource || link.getAttribute("aria-label") || "WhatsApp");
+        });
+      });
+
+      abrirPanel.addEventListener("click", abrirDialogo);
+      cerrarPanel.addEventListener("click", cerrarDialogo);
+
+      panel.addEventListener("click", function (evento) {
+        if (evento.target === panel) {
+          cerrarDialogo();
+        }
+      });
+
+      document.addEventListener("keydown", function (evento) {
+        if (evento.key === "Escape" && panel.classList.contains("visible")) {
+          cerrarDialogo();
+        }
+      });
+
+      formularioAcceso.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+
+        if (campoClave.value === CLAVE_PANEL) {
+          mensajeAcceso.textContent = "";
+          formularioAcceso.hidden = true;
+          contenidoAnalytics.hidden = false;
+          renderizarAnalytics();
+          return;
+        }
+
+        mensajeAcceso.textContent = "Contraseña incorrecta.";
+        contenidoAnalytics.hidden = true;
+      });
+
+      botonExportar.addEventListener("click", function () {
+        var analytics = leerAnalytics();
+        var blob = new Blob([JSON.stringify(analytics, null, 2)], { type: "application/json" });
+        var url = URL.createObjectURL(blob);
+        var enlace = document.createElement("a");
+        enlace.href = url;
+        enlace.download = "analytics-violencia-invisible.json";
+        document.body.appendChild(enlace);
+        enlace.click();
+        enlace.remove();
+        URL.revokeObjectURL(url);
+      });
+
+      botonReiniciar.addEventListener("click", function () {
+        localStorage.removeItem(STORAGE_KEY);
+        renderizarAnalytics();
+      });
+    })();
+
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
         navigator.serviceWorker.register("service-worker.js").catch(function () {
