@@ -499,6 +499,56 @@
       text-align: center;
     }
 
+    .sociales {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .social-link,
+    .social-pendiente {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--borde);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--texto);
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(8, 18, 37, 0.05);
+    }
+
+    .social-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(8, 18, 37, 0.08);
+    }
+
+    .social-pendiente {
+      color: var(--muted);
+      opacity: 0.88;
+    }
+
+    .social-ico {
+      width: 20px;
+      height: 20px;
+      color: var(--acento);
+      flex: 0 0 20px;
+    }
+
+    .social-etiqueta {
+      font-weight: 700;
+    }
+
+    .social-nota {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
     .wsp-flotante {
       position: fixed;
       right: 16px;
@@ -1060,6 +1110,30 @@
     <div class="contenedor">
       <strong>Violencia Invisible</strong> | Consultoría informativa<br>
       WhatsApp: 2494 28 4798
+
+      <div class="sociales" aria-label="Redes sociales">
+        <a class="social-link" href="https://www.instagram.com/violencia.invisible" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de Violencia Invisible">
+          <svg class="social-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4.1" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>
+          </svg>
+          <span>
+            <span class="social-etiqueta">Instagram</span>
+            <span class="social-nota">@violencia.invisible</span>
+          </span>
+        </a>
+
+        <span class="social-pendiente" aria-label="Facebook pendiente de enlace">
+          <svg class="social-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M13.4 20V12.9H15.8L16.2 10.2H13.4V8.5C13.4 7.7 13.7 7.1 14.9 7.1H16.3V4.7C15.6 4.6 14.8 4.5 14 4.5C11.6 4.5 10.1 6 10.1 8.7V10.2H7.8V12.9H10.1V20H13.4Z" fill="currentColor"/>
+          </svg>
+          <span>
+            <span class="social-etiqueta">Facebook</span>
+            <span class="social-nota">Enlace pendiente</span>
+          </span>
+        </span>
+      </div>
     </div>
   </footer>
 
