@@ -1,4 +1,4 @@
-const VERSION = "vi-pwa-v4";
+const VERSION = "vi-pwa-v5";
 const ARCHIVOS_CACHE = [
   "./",
   "./index.html",

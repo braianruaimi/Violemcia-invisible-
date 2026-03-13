@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0f766e">
+  <meta name="theme-color" content="#0a66ff">
   <meta name="description" content="Violencia Invisible: consultoría informativa para entender situaciones de violencia psicológica, ordenar el caso y avanzar con claridad legal.">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,20 +15,20 @@
   <meta property="og:url" content="https://braianruaimi.github.io/Violemcia-invisible-/">
   <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23f8fafc'/%3E%3Crect x='80' y='80' width='1040' height='470' rx='32' fill='%23e2e8f0'/%3E%3Ctext x='600' y='290' font-size='72' text-anchor='middle' fill='%230f172a' font-family='Segoe UI, Arial, sans-serif'%3EViolencia Invisible%3C/text%3E%3Ctext x='600' y='370' font-size='34' text-anchor='middle' fill='%23334155' font-family='Segoe UI, Arial, sans-serif'%3EConsultor%C3%ADa informativa%3C/text%3E%3C/svg%3E">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%230f766e'/%3E%3Cpath d='M96 32l46 16v36c0 37-24 61-46 76-22-15-46-39-46-76V48l46-16z' fill='%23fff'/%3E%3Cpath d='M71 96h50' stroke='%230f766e' stroke-width='8'/%3E%3Ccircle cx='96' cy='96' r='8' fill='%230f766e'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%230a66ff'/%3E%3Cpath d='M96 32l46 16v36c0 37-24 61-46 76-22-15-46-39-46-76V48l46-16z' fill='%23fff'/%3E%3Cpath d='M71 96h50' stroke='%230a66ff' stroke-width='8'/%3E%3Ccircle cx='96' cy='96' r='8' fill='%2300d0ff'/%3E%3C/svg%3E">
   <title>Violencia Invisible | Consultoría informativa</title>
   <style>
     :root {
       --fondo: #ffffff;
-      --texto: #0f172a;
-      --muted: #475569;
-      --borde: #e2e8f0;
-      --seccion: #f8fafc;
-      --acento: #0f766e;
-      --acento-hover: #115e59;
-      --acento-2: #f59e0b;
+      --texto: #081225;
+      --muted: #52627c;
+      --borde: #d9e3f0;
+      --seccion: #f4f8fc;
+      --acento: #0a66ff;
+      --acento-hover: #0050d2;
+      --acento-2: #00d0ff;
       --radio: 18px;
-      --sombra: 0 12px 30px rgba(15, 23, 42, 0.10);
+      --sombra: 0 14px 36px rgba(8, 18, 37, 0.10);
       --contenedor: min(1080px, 92vw);
       --desfase-header: 74px;
     }
@@ -65,9 +65,10 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--borde);
+      box-shadow: 0 8px 24px rgba(8, 18, 37, 0.04);
     }
 
     .topbar-inner {
@@ -105,18 +106,18 @@
 
     .boton-principal {
       color: #fff;
-      background: var(--acento);
-      box-shadow: 0 10px 24px rgba(15, 118, 110, 0.24);
+      background: linear-gradient(135deg, var(--acento), var(--acento-2));
+      box-shadow: 0 12px 28px rgba(10, 102, 255, 0.26);
     }
 
     .boton-principal:hover {
-      background: var(--acento-hover);
+      background: linear-gradient(135deg, var(--acento-hover), #00b8ea);
       transform: translateY(-1px);
     }
 
     .boton-secundario {
       color: var(--texto);
-      background: #fff;
+      background: rgba(255, 255, 255, 0.96);
       border: 1px solid var(--borde);
     }
 
@@ -135,8 +136,8 @@
       padding-top: 52px;
       overflow: clip;
       background:
-        radial-gradient(circle at 86% 10%, rgba(15, 118, 110, 0.12), transparent 34%),
-        radial-gradient(circle at 12% 28%, rgba(245, 158, 11, 0.10), transparent 26%),
+        radial-gradient(circle at 86% 10%, rgba(10, 102, 255, 0.16), transparent 34%),
+        radial-gradient(circle at 12% 28%, rgba(0, 208, 255, 0.12), transparent 26%),
         var(--fondo);
     }
 
@@ -178,7 +179,7 @@
       border: 1px solid var(--borde);
       border-radius: var(--radio);
       padding: 22px;
-      box-shadow: var(--sombra);
+      box-shadow: 0 18px 42px rgba(8, 18, 37, 0.08);
       display: grid;
       gap: 14px;
       align-content: start;
@@ -199,7 +200,7 @@
       border-radius: 12px;
       display: grid;
       place-items: center;
-      background: color-mix(in srgb, var(--acento) 14%, white);
+      background: color-mix(in srgb, var(--acento-2) 18%, white);
       color: var(--acento);
     }
 
@@ -272,7 +273,7 @@
 
     .tarjeta:hover {
       transform: translateY(-4px);
-      border-color: color-mix(in srgb, var(--acento) 35%, var(--borde));
+      border-color: color-mix(in srgb, var(--acento) 38%, var(--borde));
       box-shadow: var(--sombra);
     }
 
@@ -281,7 +282,7 @@
       width: fit-content;
       padding: 6px 12px;
       border-radius: 999px;
-      background: color-mix(in srgb, var(--acento) 12%, white);
+      background: color-mix(in srgb, var(--acento-2) 18%, white);
       color: var(--acento-hover);
       font-weight: 700;
       font-size: 0.93rem;
@@ -438,7 +439,7 @@
     .cta-final {
       text-align: center;
       background:
-        linear-gradient(170deg, color-mix(in srgb, var(--acento) 8%, white), #ffffff 42%),
+        linear-gradient(170deg, color-mix(in srgb, var(--acento-2) 10%, white), #ffffff 42%),
         #fff;
       border-top: 1px solid var(--borde);
     }
@@ -463,11 +464,11 @@
       right: 16px;
       bottom: 16px;
       z-index: 40;
-      width: 58px;
+      background: linear-gradient(135deg, var(--acento-hover), var(--acento-2));
       height: 58px;
       border-radius: 999px;
       border: 0;
-      background: #25d366;
+      box-shadow: 0 14px 30px rgba(10, 102, 255, 0.25);
       color: #fff;
       display: grid;
       place-items: center;
@@ -880,7 +881,7 @@
             <p>Enviás un audio explicando tu situación y recibís el mismo día una guía escrita con lo importante del caso, las pruebas que conviene guardar, qué pedir y pasos concretos para avanzar.</p>
             <p class="pago"><strong>Pago:</strong> 50% al iniciar y 50% al recibir la guía.</p>
             <div class="acciones-servicio">
-              <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio guía">Solicitar guía</a>
+              <button class="boton boton-principal boton-acceder" type="button" data-servicio="Guía personalizada">Solicitar guía</button>
               <button class="boton boton-secundario boton-acceder" type="button" data-servicio="Guía personalizada">Acceder</button>
             </div>
           </article>
@@ -891,7 +892,7 @@
             <p>Durante 30 minutos analizamos tu situación y definimos prioridades, primeros pasos legales, cómo presentar pedidos y un plan concreto para avanzar.</p>
             <p class="pago"><strong>Pago:</strong> 50% para reservar y 50% al finalizar.</p>
             <div class="acciones-servicio">
-              <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio entrevista">Reservar entrevista</a>
+              <button class="boton boton-principal boton-acceder" type="button" data-servicio="Entrevista 1 a 1">Reservar entrevista</button>
               <button class="boton boton-secundario boton-acceder" type="button" data-servicio="Entrevista 1 a 1">Acceder</button>
             </div>
           </article>
@@ -902,7 +903,7 @@
             <p>Incluye el PDF con leyes, derechos, patrones de manipulación y tipos de violencia psicológica, más una sesión 1 a 1 para revisar tu caso y ordenar pasos concretos.</p>
             <p class="pago"><strong>Formato:</strong> material digital + encuentro personalizado.</p>
             <div class="acciones-servicio">
-              <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio PDF + sesión 1 a 1">Comprar acceso</a>
+              <button class="boton boton-principal boton-acceder" type="button" data-servicio="PDF + 1 a 1 conmigo">Comprar acceso</button>
               <button class="boton boton-secundario boton-acceder" type="button" data-servicio="PDF + 1 a 1 conmigo">Acceder</button>
             </div>
           </article>
