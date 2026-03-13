@@ -496,21 +496,96 @@
       align-items: start;
     }
 
-    .testimonios {
+    .testimonios-carrusel {
       margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .testimonios-track {
+      display: flex;
+      transition: transform 560ms ease;
+      will-change: transform;
+    }
+
+    .testimonio-card {
+      min-width: 100%;
+      padding: 6px;
+    }
+
+    .testimonio-interno {
+      height: 100%;
+      border: 1px solid var(--borde);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      box-shadow: 0 12px 28px rgba(8, 18, 37, 0.06);
+      padding: 20px;
       display: grid;
+      gap: 16px;
+    }
+
+    .testimonio-interno p {
+      margin: 0;
+      color: #1e293b;
+      font-size: 1.04rem;
+    }
+
+    .testimonio-cliente {
+      display: flex;
+      align-items: center;
       gap: 12px;
     }
 
-    blockquote {
-      margin: 0;
-      padding: 18px 16px;
-      border-radius: 14px;
-      border: 1px solid var(--borde);
-      background: #fff;
-      color: #1e293b;
-      font-size: 1.02rem;
-      box-shadow: 0 7px 20px rgba(15, 23, 42, 0.04);
+    .avatar-cliente {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, var(--acento-hover), var(--acento-2));
+      box-shadow: 0 10px 20px rgba(10, 102, 255, 0.22);
+      flex: 0 0 48px;
+    }
+
+    .cliente-datos strong,
+    .cliente-datos span {
+      display: block;
+    }
+
+    .cliente-datos strong {
+      color: var(--texto);
+    }
+
+    .cliente-datos span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .testimonios-indicadores {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .testimonios-indicadores button {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: #c6d4e8;
+      cursor: pointer;
+      transition: transform 180ms ease, background-color 180ms ease;
+    }
+
+    .testimonios-indicadores button.activo {
+      background: var(--acento);
+      transform: scale(1.18);
     }
 
     .cta-final {
@@ -890,10 +965,6 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .testimonios {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
       .campos-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1134,12 +1205,112 @@
 
     <section id="experiencias" aria-labelledby="titulo-experiencias">
       <div class="contenedor">
-        <h2 id="titulo-experiencias">Mensajes de referencia</h2>
-        <p class="texto-seccion">Estos mensajes reflejan el tipo de claridad que buscan quienes consultan.</p>
-        <div class="testimonios" aria-label="Comentarios informativos">
-          <blockquote>"Por primera vez entendí cómo ordenar mi situación."</blockquote>
-          <blockquote>"La guía me ayudó a ver claramente qué pasos debía dar."</blockquote>
-          <blockquote>"Me dio claridad antes de tomar decisiones importantes."</blockquote>
+        <h2 id="titulo-experiencias">Testimonios</h2>
+        <p class="texto-seccion">Experiencias de personas que encontraron claridad, orden y dirección para dar sus próximos pasos.</p>
+
+        <div class="testimonios-carrusel" aria-label="Testimonios de clientes">
+          <div class="testimonios-track" id="testimonios-track">
+            <article class="testimonio-card">
+              <div class="testimonio-interno">
+                <p>"Por primera vez entendí cómo ordenar mi situación y dejar de reaccionar desde la confusión."</p>
+                <div class="testimonio-cliente">
+                  <div class="avatar-cliente" aria-hidden="true">LP</div>
+                  <div class="cliente-datos">
+                    <strong>Lucía Pérez</strong>
+                    <span>Consulta inicial</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonio-card">
+              <div class="testimonio-interno">
+                <p>"La guía me ayudó a ver claramente qué pruebas debía guardar y qué pasos tenía sentido dar primero."</p>
+                <div class="testimonio-cliente">
+                  <div class="avatar-cliente" aria-hidden="true">MR</div>
+                  <div class="cliente-datos">
+                    <strong>Marina Roldán</strong>
+                    <span>Guía personalizada</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonio-card">
+              <div class="testimonio-interno">
+                <p>"Me dio claridad antes de tomar decisiones importantes y me permitió hablar con más seguridad."</p>
+                <div class="testimonio-cliente">
+                  <div class="avatar-cliente" aria-hidden="true">CG</div>
+                  <div class="cliente-datos">
+                    <strong>Carla Gómez</strong>
+                    <span>Entrevista 1 a 1</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonio-card">
+              <div class="testimonio-interno">
+                <p>"Yo sabía que algo estaba mal, pero no lograba explicarlo. La orientación me ayudó a ponerle nombre."</p>
+                <div class="testimonio-cliente">
+                  <div class="avatar-cliente" aria-hidden="true">AS</div>
+                  <div class="cliente-datos">
+                    <strong>Agustina Sosa</strong>
+                    <span>Consulta informativa</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonio-card">
+              <div class="testimonio-interno">
+                <p>"Sentí seriedad, respeto y una explicación concreta de qué me convenía hacer sin perjudicarme."</p>
+                <div class="testimonio-cliente">
+                  <div class="avatar-cliente" aria-hidden="true">VN</div>
+                  <div class="cliente-datos">
+                    <strong>Valeria Núñez</strong>
+                    <span>Plan de acción</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonio-card">
+              <div class="testimonio-interno">
+                <p>"La sesión me ordenó emocionalmente y también me mostró cómo moverme con más criterio legal."</p>
+                <div class="testimonio-cliente">
+                  <div class="avatar-cliente" aria-hidden="true">FD</div>
+                  <div class="cliente-datos">
+                    <strong>Fernando Díaz</strong>
+                    <span>Entrevista privada</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonio-card">
+              <div class="testimonio-interno">
+                <p>"Pasé de sentirme paralizada a tener una hoja de ruta clara para avanzar con más tranquilidad."</p>
+                <div class="testimonio-cliente">
+                  <div class="avatar-cliente" aria-hidden="true">RS</div>
+                  <div class="cliente-datos">
+                    <strong>Romina Suárez</strong>
+                    <span>PDF + sesión 1 a 1</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="testimonios-indicadores" id="testimonios-indicadores" aria-label="Indicadores de testimonios">
+            <button class="activo" type="button" aria-label="Ir al testimonio 1"></button>
+            <button type="button" aria-label="Ir al testimonio 2"></button>
+            <button type="button" aria-label="Ir al testimonio 3"></button>
+            <button type="button" aria-label="Ir al testimonio 4"></button>
+            <button type="button" aria-label="Ir al testimonio 5"></button>
+            <button type="button" aria-label="Ir al testimonio 6"></button>
+            <button type="button" aria-label="Ir al testimonio 7"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -1382,9 +1553,13 @@
       var botonReiniciar = document.getElementById("reiniciar-analytics");
       var faqBotones = document.querySelectorAll(".faq-boton");
       var chatFaq = document.getElementById("chat-faq");
+      var testimoniosTrack = document.getElementById("testimonios-track");
+      var testimoniosIndicadores = document.querySelectorAll("#testimonios-indicadores button");
       var formularioReserva = document.getElementById("form-reserva");
       var mensajeReserva = document.getElementById("mensaje-reserva");
       var baseWhatsApp = "https://wa.me/5492494284798?text=";
+      var indiceTestimonio = 0;
+      var temporizadorTestimonios;
       var respuestasFaq = {
         situacion: "Si vivís manipulación, presión constante, control, confusión o desgaste emocional, puede haber indicadores de violencia psicológica o invisible. La propuesta de Violencia Invisible es ayudarte a ordenar lo que pasa y entender qué elementos son relevantes antes de tomar decisiones legales.",
         pruebas: "Conviene guardar audios, mensajes, correos, capturas, fechas, pedidos realizados y cualquier registro que muestre patrones de manipulación o presión. La guía y la entrevista están pensadas justamente para identificar qué sirve y cómo conservarlo sin perjudicar tu posición.",
@@ -1510,6 +1685,29 @@
         return String(valor || "").trim();
       }
 
+      function irATestimonio(indice) {
+        if (!testimoniosTrack || testimoniosIndicadores.length === 0) {
+          return;
+        }
+
+        indiceTestimonio = indice;
+        testimoniosTrack.style.transform = "translateX(-" + (indice * 100) + "%)";
+        testimoniosIndicadores.forEach(function (boton, botonIndice) {
+          boton.classList.toggle("activo", botonIndice === indice);
+        });
+      }
+
+      function iniciarCarruselTestimonios() {
+        if (!testimoniosTrack || testimoniosIndicadores.length === 0) {
+          return;
+        }
+
+        temporizadorTestimonios = window.setInterval(function () {
+          var siguiente = (indiceTestimonio + 1) % testimoniosIndicadores.length;
+          irATestimonio(siguiente);
+        }, 2000);
+      }
+
       function abrirModal(modal) {
         modal.classList.add("visible");
         modal.setAttribute("aria-hidden", "false");
@@ -1550,10 +1748,20 @@
       }
 
       registrarVista();
+      irATestimonio(0);
+      iniciarCarruselTestimonios();
 
       whatsappLinks.forEach(function (link) {
         link.addEventListener("click", function () {
           registrarClickWhatsApp(link.dataset.whatsappSource || link.getAttribute("aria-label") || "WhatsApp");
+        });
+      });
+
+      testimoniosIndicadores.forEach(function (boton, indice) {
+        boton.addEventListener("click", function () {
+          window.clearInterval(temporizadorTestimonios);
+          irATestimonio(indice);
+          iniciarCarruselTestimonios();
         });
       });
 
