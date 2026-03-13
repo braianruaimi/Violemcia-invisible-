@@ -241,6 +241,43 @@
       gap: 14px;
     }
 
+    .quienes-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .quienes-texto,
+    .quienes-destacado {
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: 22px;
+      box-shadow: 0 14px 30px rgba(8, 18, 37, 0.06);
+    }
+
+    .quienes-texto p,
+    .quienes-destacado p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .quienes-texto p + p,
+    .quienes-destacado p + p {
+      margin-top: 14px;
+    }
+
+    .quienes-destacado {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 252, 0.98));
+    }
+
+    .quienes-destacado strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--texto);
+      font-size: 1rem;
+    }
+
     .derecho-card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 252, 0.98));
       border: 1px solid var(--borde);
@@ -864,6 +901,11 @@
       .franja-derechos {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+
+      .quienes-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -980,6 +1022,27 @@
             <strong>Tenés derecho a ser escuchado con seriedad y respeto.</strong>
             <p>Cuando hay manipulación o violencia invisible, poner en palabras lo que pasa es el primer paso para recuperar dirección.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="quienes-somos" aria-labelledby="titulo-quienes-somos">
+      <div class="contenedor">
+        <h2 id="titulo-quienes-somos">Quiénes somos</h2>
+        <p class="texto-seccion">Violencia Invisible nace para dar nombre, dirección y herramientas a realidades que muchas veces no dejan marcas visibles, pero sí desgaste, miedo, confusión y silencio.</p>
+
+        <div class="quienes-grid">
+          <article class="quienes-texto">
+            <p>Este proyecto fue creado con una idea clara: ayudar a quienes no pueden gritar, pero necesitan comprender lo que están viviendo y encontrar un camino posible para actuar con más claridad.</p>
+            <p>La violencia invisible suele presentarse como manipulación, control, presión psicológica, desgaste emocional o desvalorización constante. Justamente por no ser siempre evidente hacia afuera, muchas personas tardan en reconocerla, explicarla o saber qué hacer frente a ella.</p>
+            <p>Por eso Violencia Invisible propone un espacio serio, respetuoso y profesional, pensado para ordenar la situación, identificar lo importante, cuidar pruebas y brindar orientación informativa antes de dar pasos que puedan tener impacto legal.</p>
+          </article>
+
+          <aside class="quienes-destacado" aria-label="Propósito del proyecto">
+            <strong>Un proyecto creado para transformar silencio en claridad.</strong>
+            <p>No se trata solo de responder preguntas. Se trata de ofrecer criterio, lenguaje claro y una mirada responsable para que cada persona pueda entender sus derechos, reconocer patrones dañinos y recuperar dirección.</p>
+            <p>Cuando alguien no puede gritar, tener información clara también es una forma de empezar a defenderse.</p>
+          </aside>
         </div>
       </div>
     </section>
