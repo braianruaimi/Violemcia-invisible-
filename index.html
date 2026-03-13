@@ -141,9 +141,23 @@
         var(--fondo);
     }
 
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.24;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900' viewBox='0 0 1200 900'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Ccircle cx='940' cy='180' r='210' fill='%2300d0ff' fill-opacity='.12'/%3E%3Ccircle cx='980' cy='240' r='120' fill='%230a66ff' fill-opacity='.10'/%3E%3Cpath d='M818 170c68-28 137-42 206-42 26 0 52 2 78 5v327c-43 15-86 23-129 23-116 0-225-58-295-157 25-72 73-127 140-156Z' fill='%23081625' fill-opacity='.04'/%3E%3Cpath d='M896 229l84-29 84 29v65c0 67-44 111-84 138-40-27-84-71-84-138v-65Z' fill='%230a66ff' fill-opacity='.13'/%3E%3Cpath d='M955 298h50' stroke='%230a66ff' stroke-opacity='.6' stroke-width='14' stroke-linecap='round'/%3E%3Ccircle cx='980' cy='298' r='11' fill='%2300d0ff' fill-opacity='.85'/%3E%3Cpath d='M830 535c57-21 118-31 181-31 59 0 118 10 174 28' stroke='%23081625' stroke-opacity='.09' stroke-width='18' stroke-linecap='round'/%3E%3Cpath d='M920 612c33 13 68 19 104 19 33 0 65-5 96-15' stroke='%230a66ff' stroke-opacity='.18' stroke-width='12' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: min(58vw, 760px);
+    }
+
     .hero-grid {
       display: grid;
       gap: 28px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero h1 {
@@ -219,6 +233,32 @@
     .texto-seccion {
       color: var(--muted);
       max-width: 74ch;
+    }
+
+    .franja-derechos {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .derecho-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 252, 0.98));
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 14px 30px rgba(8, 18, 37, 0.05);
+    }
+
+    .derecho-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--texto);
+      font-size: 1rem;
+    }
+
+    .derecho-card p {
+      margin: 0;
+      color: var(--muted);
     }
 
     .lista-check {
@@ -770,6 +810,10 @@
       .campos-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .franja-derechos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -796,6 +840,12 @@
 
       .boton-panel {
         bottom: 82px;
+      }
+
+      .hero::after {
+        background-size: 115vw;
+        background-position: 140% 8%;
+        opacity: 0.16;
       }
     }
   </style>
@@ -866,6 +916,21 @@
           <li>Conocer cómo moverte legalmente en tus próximos pasos.</li>
           <li>Recordar que la violencia no tiene género y merece ser comprendida con seriedad.</li>
         </ul>
+
+        <div class="franja-derechos" aria-label="Mensajes sobre derechos y protección">
+          <article class="derecho-card">
+            <strong>Tenés derecho a entender tu situación antes de decidir.</strong>
+            <p>La claridad no es un lujo: es la base para protegerte mejor, ordenar lo importante y avanzar sin improvisación.</p>
+          </article>
+          <article class="derecho-card">
+            <strong>Tenés derecho a guardar pruebas y cuidar tu posición.</strong>
+            <p>Registrar hechos, mensajes y pedidos puede marcar una diferencia real cuando necesitás respaldo y coherencia legal.</p>
+          </article>
+          <article class="derecho-card">
+            <strong>Tenés derecho a ser escuchado con seriedad y respeto.</strong>
+            <p>Cuando hay manipulación o violencia invisible, poner en palabras lo que pasa es el primer paso para recuperar dirección.</p>
+          </article>
+        </div>
       </div>
     </section>
 
