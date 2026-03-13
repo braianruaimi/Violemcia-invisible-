@@ -1904,8 +1904,59 @@
 
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("service-worker.js").catch(function () {
+        var recargandoPorUpdate = false;
+        var avisoMostrado = false;
+
+        function pedirActualizacion(worker) {
+          if (!worker || avisoMostrado) {
+            return;
+          }
+
+          avisoMostrado = true;
+          var aceptar = window.confirm("Hay una nueva versión de la app disponible. Presioná OK para actualizar ahora.");
+
+          if (aceptar) {
+            worker.postMessage({ type: "SKIP_WAITING" });
+            return;
+          }
+
+          avisoMostrado = false;
+        }
+
+        navigator.serviceWorker.register("service-worker.js").then(function (registration) {
+          if (registration.waiting) {
+            pedirActualizacion(registration.waiting);
+          }
+
+          registration.addEventListener("updatefound", function () {
+            var nuevoWorker = registration.installing;
+            if (!nuevoWorker) {
+              return;
+            }
+
+            nuevoWorker.addEventListener("statechange", function () {
+              if (nuevoWorker.state === "installed" && navigator.serviceWorker.controller) {
+                pedirActualizacion(nuevoWorker);
+              }
+            });
+          });
+
+          window.setTimeout(function () {
+            registration.update().catch(function () {
+              // La verificación manual es opcional.
+            });
+          }, 1200);
+        }).catch(function () {
           // Registro opcional sin interrumpir la experiencia si falla.
+        });
+
+        navigator.serviceWorker.addEventListener("controllerchange", function () {
+          if (recargandoPorUpdate) {
+            return;
+          }
+
+          recargandoPorUpdate = true;
+          window.location.reload();
         });
       });
     }

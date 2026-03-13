@@ -1,4 +1,4 @@
-const VERSION = "vi-pwa-v7";
+const VERSION = "vi-pwa-v8";
 const ARCHIVOS_CACHE = [
   "./",
   "./index.html",
@@ -9,7 +9,12 @@ self.addEventListener("install", (evento) => {
   evento.waitUntil(
     caches.open(VERSION).then((cache) => cache.addAll(ARCHIVOS_CACHE))
   );
-  self.skipWaiting();
+});
+
+self.addEventListener("message", (evento) => {
+  if (evento.data && evento.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", (evento) => {
