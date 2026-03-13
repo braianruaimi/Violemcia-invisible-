@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="Violencia Invisible: consultoría informativa para entender situaciones de violencia psicológica, ordenar el caso y avanzar con claridad legal.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Violencia Invisible">
+  <meta property="og:title" content="Violencia Invisible">
+  <meta property="og:description" content="Violencia sin género. Leyes claras. Pasos y voz para quienes no pueden gritar.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://braianruaimi.github.io/Violemcia-invisible-/">
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23f8fafc'/%3E%3Crect x='80' y='80' width='1040' height='470' rx='32' fill='%23e2e8f0'/%3E%3Ctext x='600' y='290' font-size='72' text-anchor='middle' fill='%230f172a' font-family='Segoe UI, Arial, sans-serif'%3EViolencia Invisible%3C/text%3E%3Ctext x='600' y='370' font-size='34' text-anchor='middle' fill='%23334155' font-family='Segoe UI, Arial, sans-serif'%3EConsultor%C3%ADa informativa%3C/text%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%230f766e'/%3E%3Cpath d='M96 32l46 16v36c0 37-24 61-46 76-22-15-46-39-46-76V48l46-16z' fill='%23fff'/%3E%3Cpath d='M71 96h50' stroke='%230f766e' stroke-width='8'/%3E%3Ccircle cx='96' cy='96' r='8' fill='%230f766e'/%3E%3C/svg%3E">
+  <title>Violencia Invisible | Consultoría informativa</title>
+  <style>
+    :root {
+      --fondo: #ffffff;
+      --texto: #0f172a;
+      --muted: #475569;
+      --borde: #e2e8f0;
+      --seccion: #f8fafc;
+      --acento: #0f766e;
+      --acento-hover: #115e59;
+      --acento-2: #f59e0b;
+      --radio: 18px;
+      --sombra: 0 12px 30px rgba(15, 23, 42, 0.10);
+      --contenedor: min(1080px, 92vw);
+      --desfase-header: 74px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Noto Sans", "Helvetica Neue", sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .contenedor {
+      width: var(--contenedor);
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .topbar-inner {
+      min-height: var(--desfase-header);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .marca {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .boton {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+
+    .boton:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--acento) 45%, white);
+      outline-offset: 2px;
+    }
+
+    .boton-principal {
+      color: #fff;
+      background: var(--acento);
+      box-shadow: 0 10px 24px rgba(15, 118, 110, 0.24);
+    }
+
+    .boton-principal:hover {
+      background: var(--acento-hover);
+      transform: translateY(-1px);
+    }
+
+    .boton-secundario {
+      color: var(--texto);
+      background: #fff;
+      border: 1px solid var(--borde);
+    }
+
+    .boton-secundario:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--sombra);
+    }
+
+    section {
+      scroll-margin-top: calc(var(--desfase-header) + 18px);
+      padding: 64px 0;
+    }
+
+    .hero {
+      position: relative;
+      padding-top: 52px;
+      overflow: clip;
+      background:
+        radial-gradient(circle at 86% 10%, rgba(15, 118, 110, 0.12), transparent 34%),
+        radial-gradient(circle at 12% 28%, rgba(245, 158, 11, 0.10), transparent 26%),
+        var(--fondo);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 9vw, 3.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .slogan {
+      margin: 10px 0 0;
+      color: var(--acento);
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+
+    .intro {
+      margin: 18px 0 0;
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 1.05rem;
+    }
+
+    .acciones {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .panel-hero {
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: 22px;
+      box-shadow: var(--sombra);
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .fila-ico {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--texto);
+      font-weight: 600;
+    }
+
+    .icono {
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: color-mix(in srgb, var(--acento) 14%, white);
+      color: var(--acento);
+    }
+
+    .fondo-gris {
+      background: var(--seccion);
+      border-top: 1px solid var(--borde);
+      border-bottom: 1px solid var(--borde);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.5rem, 6vw, 2.2rem);
+      letter-spacing: -0.02em;
+    }
+
+    .texto-seccion {
+      color: var(--muted);
+      max-width: 74ch;
+    }
+
+    .lista-check {
+      list-style: none;
+      margin: 20px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .lista-check li {
+      display: flex;
+      align-items: start;
+      gap: 10px;
+      color: #1e293b;
+    }
+
+    .lista-check li::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      margin-top: 7px;
+      border-radius: 99px;
+      background: var(--acento);
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--acento) 20%, white);
+      flex: 0 0 12px;
+    }
+
+    .tarjetas-servicios {
+      margin-top: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .tarjeta {
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: 20px;
+      display: grid;
+      gap: 10px;
+      transition: transform 210ms ease, box-shadow 210ms ease, border-color 210ms ease;
+      will-change: transform;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--acento) 35%, var(--borde));
+      box-shadow: var(--sombra);
+    }
+
+    .etiqueta-precio {
+      display: inline-block;
+      width: fit-content;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--acento) 12%, white);
+      color: var(--acento-hover);
+      font-weight: 700;
+      font-size: 0.93rem;
+    }
+
+    .pago {
+      margin: 2px 0 6px;
+      color: #334155;
+      font-size: 0.95rem;
+    }
+
+    .grilla-confianza {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .item-confianza {
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .testimonios {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 18px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--borde);
+      background: #fff;
+      color: #1e293b;
+      font-size: 1.02rem;
+      box-shadow: 0 7px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .cta-final {
+      text-align: center;
+      background:
+        linear-gradient(170deg, color-mix(in srgb, var(--acento) 8%, white), #ffffff 42%),
+        #fff;
+      border-top: 1px solid var(--borde);
+    }
+
+    .cta-final p {
+      color: #334155;
+      margin: 0 auto 20px;
+      max-width: 60ch;
+      font-size: 1.07rem;
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      border-top: 1px solid var(--borde);
+      color: #334155;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .wsp-flotante {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 40;
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      border: 0;
+      background: #25d366;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 14px 30px rgba(37, 211, 102, 0.34);
+      transition: transform 160ms ease;
+    }
+
+    .wsp-flotante:hover {
+      transform: scale(1.06);
+    }
+
+    .wsp-flotante span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .entrada {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: subir 700ms ease forwards;
+    }
+
+    .entrada.delay-1 { animation-delay: 90ms; }
+    .entrada.delay-2 { animation-delay: 170ms; }
+
+    @keyframes subir {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (min-width: 760px) {
+      section {
+        padding: 86px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.25fr 0.9fr;
+        align-items: center;
+      }
+
+      .tarjetas-servicios {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grilla-confianza {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .testimonios {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .entrada,
+      .tarjeta,
+      .boton,
+      .wsp-flotante {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="Navegación principal">
+    <div class="contenedor topbar-inner">
+      <div class="marca">Violencia Invisible</div>
+      <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" aria-label="Reservar consulta por WhatsApp">
+        Reservar consulta
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio" aria-labelledby="titulo-principal">
+      <div class="contenedor hero-grid">
+        <div class="entrada">
+          <h1 id="titulo-principal">Violencia Invisible</h1>
+          <p class="slogan">Violencia sin género. Leyes claras. Pasos y voz para quienes no pueden gritar.</p>
+          <p class="intro">Muchas personas viven manipulación, presión psicológica o violencia invisible sin saber cómo nombrarlo ni cómo actuar. Esta consultoría te brinda claridad para entender tu situación antes de dar pasos legales.</p>
+          <div class="acciones">
+            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Reservar consulta por WhatsApp</a>
+            <a class="boton boton-secundario" href="#servicios">Ver opciones de asesoramiento</a>
+          </div>
+        </div>
+        <aside class="panel-hero entrada delay-1" aria-label="Beneficios de la asesoría">
+          <div class="fila-ico">
+            <div class="icono" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2L20 5V11C20 16.52 16.73 20.74 12 22C7.27 20.74 4 16.52 4 11V5L12 2Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M9 11.7L11.2 14L15.2 10" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            Enfoque serio y responsable
+          </div>
+          <div class="fila-ico">
+            <div class="icono" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 7V12L15.2 14" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            Respuesta clara y concreta
+          </div>
+          <div class="fila-ico">
+            <div class="icono" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7H20M7 3V7M17 3V7" stroke="currentColor" stroke-width="1.8"/>
+                <rect x="4" y="7" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 12H12" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            Plan de acción paso a paso
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre" class="fondo-gris" aria-labelledby="titulo-sobre">
+      <div class="contenedor">
+        <h2 id="titulo-sobre">Asesoramiento para ordenar, comprender y actuar</h2>
+        <p class="texto-seccion">La consulta está pensada para que puedas entender qué te está pasando, ordenar tu caso y avanzar con dirección. El objetivo es brindarte orientación informativa con criterio legal y lenguaje claro.</p>
+        <ul class="lista-check" aria-label="Objetivos de la consulta">
+          <li>Entender tu situación con mayor claridad.</li>
+          <li>Ordenar tu caso y diferenciar lo esencial de lo secundario.</li>
+          <li>Identificar qué pruebas conviene guardar desde ahora.</li>
+          <li>Conocer cómo moverte legalmente en tus próximos pasos.</li>
+          <li>Recordar que la violencia no tiene género y merece ser comprendida con seriedad.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="servicios" aria-labelledby="titulo-servicios">
+      <div class="contenedor">
+        <h2 id="titulo-servicios">Opciones de asesoramiento</h2>
+        <p class="texto-seccion">Elegí el formato que mejor se adapte a tu momento. En todos los casos el foco está en la claridad, el orden y los pasos concretos para avanzar.</p>
+
+        <div class="tarjetas-servicios">
+          <article class="tarjeta" aria-labelledby="servicio-guia">
+            <h3 id="servicio-guia">Guía personalizada paso a paso</h3>
+            <span class="etiqueta-precio">$30.000</span>
+            <p>Enviás un audio explicando tu situación y recibís el mismo día una guía escrita con lo importante del caso, las pruebas que conviene guardar, qué pedir y pasos concretos para avanzar.</p>
+            <p class="pago"><strong>Pago:</strong> 50% al iniciar y 50% al recibir la guía.</p>
+            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Solicitar guía</a>
+          </article>
+
+          <article class="tarjeta" aria-labelledby="servicio-entrevista">
+            <h3 id="servicio-entrevista">Entrevista privada de 30 minutos</h3>
+            <span class="etiqueta-precio">$50.000</span>
+            <p>Durante 30 minutos analizamos tu situación y definimos prioridades, primeros pasos legales, cómo presentar pedidos y un plan concreto para avanzar.</p>
+            <p class="pago"><strong>Pago:</strong> 50% para reservar y 50% al finalizar.</p>
+            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Reservar entrevista</a>
+          </article>
+
+          <article class="tarjeta" aria-labelledby="servicio-libro">
+            <h3 id="servicio-libro">Libro digital</h3>
+            <span class="etiqueta-precio">$30.000</span>
+            <p>Un PDF que explica leyes y derechos, patrones de manipulación, tipos de violencia psicológica y cómo actuar sin perjudicar tu posición legal.</p>
+            <p class="pago"><strong>Formato:</strong> entrega digital.</p>
+            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Comprar libro</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="confianza" class="fondo-gris" aria-labelledby="titulo-confianza">
+      <div class="contenedor">
+        <h2 id="titulo-confianza">Confianza, claridad y responsabilidad</h2>
+        <p class="texto-seccion">El acompañamiento está orientado a brindar herramientas para comprender tu escenario, ordenar decisiones y conocer mejor cómo funciona el sistema legal.</p>
+        <div class="grilla-confianza">
+          <div class="item-confianza">
+            <div class="icono" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3L4 7V12C4 17 7 20 12 21C17 20 20 17 20 12V7L12 3Z" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <div>Enfoque serio y responsable ante situaciones sensibles.</div>
+          </div>
+          <div class="item-confianza">
+            <div class="icono" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12H20M12 4V20" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <div>Claridad antes de tomar decisiones legales importantes.</div>
+          </div>
+          <div class="item-confianza">
+            <div class="icono" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M5 20C5 16.7 8.1 14 12 14C15.9 14 19 16.7 19 20" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <div>Acompañamiento informativo para ordenar prioridades y pasos.</div>
+          </div>
+          <div class="item-confianza">
+            <div class="icono" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 5H20V19H4V5Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 9H16M8 13H16" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <div>Objetivo: brindar comprensión del sistema y herramientas concretas.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencias" aria-labelledby="titulo-experiencias">
+      <div class="contenedor">
+        <h2 id="titulo-experiencias">Mensajes de referencia</h2>
+        <p class="texto-seccion">Estos mensajes reflejan el tipo de claridad que buscan quienes consultan.</p>
+        <div class="testimonios" aria-label="Comentarios informativos">
+          <blockquote>"Por primera vez entendí cómo ordenar mi situación."</blockquote>
+          <blockquote>"La guía me ayudó a ver claramente qué pasos debía dar."</blockquote>
+          <blockquote>"Me dio claridad antes de tomar decisiones importantes."</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-final" id="contacto" aria-labelledby="titulo-cta-final">
+      <div class="contenedor entrada delay-2">
+        <h2 id="titulo-cta-final">No tenés que atravesar esto sin entender qué está pasando ni cómo actuar.</h2>
+        <p>Reservá tu espacio por WhatsApp y recibí orientación clara para dar los próximos pasos con mayor seguridad.</p>
+        <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp ahora</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <strong>Violencia Invisible</strong> | Consultoría informativa<br>
+      WhatsApp: 2494 28 4798
+    </div>
+  </footer>
+
+  <a class="wsp-flotante" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp para consulta">
+    <span>WhatsApp</span>
+    <svg width="27" height="27" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M27.15 4.8A15.9 15.9 0 0 0 16.03.03C7.3.03.2 7.13.2 15.87c0 2.8.73 5.55 2.12 7.97L0 32l8.38-2.2a15.84 15.84 0 0 0 7.65 1.96h.01c8.73 0 15.83-7.1 15.83-15.84 0-4.23-1.65-8.2-4.72-11.12z" fill="currentColor"/>
+      <path d="M12.2 9.6c-.3-.67-.62-.68-.9-.69h-.76c-.27 0-.7.1-1.07.5-.37.4-1.4 1.37-1.4 3.35 0 1.98 1.44 3.9 1.64 4.17.2.27 2.83 4.53 7.04 6.2 3.5 1.38 4.22 1.1 4.98 1.03.76-.07 2.44-1 2.79-1.98.35-.97.35-1.8.25-1.98-.1-.17-.37-.27-.76-.47-.4-.2-2.35-1.2-2.71-1.34-.37-.13-.63-.2-.9.2-.27.4-1.03 1.34-1.27 1.61-.23.27-.47.3-.86.1-.4-.2-1.68-.63-3.2-2-.27-.24-1.5-1.57-1.73-2.1-.23-.53-.02-.82.17-1.02.17-.2.4-.5.6-.74.2-.24.27-.4.4-.67.13-.27.07-.5-.03-.7-.1-.2-.9-2.3-1.26-3.1z" fill="#ffffff"/>
+    </svg>
+  </a>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("service-worker.js").catch(function () {
+          // Registro opcional sin interrumpir la experiencia si falla.
+        });
+      });
+    }
+  </script>
+</body>
+</html>

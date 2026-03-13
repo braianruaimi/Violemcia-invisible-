@@ -1,0 +1,25 @@
+{
+  "name": "Violencia Invisible",
+  "short_name": "V. Invisible",
+  "description": "Consultoría informativa para claridad legal y orientación en situaciones de violencia invisible.",
+  "lang": "es-AR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%230f766e'/%3E%3Cpath d='M96 32l46 16v36c0 37-24 61-46 76-22-15-46-39-46-76V48l46-16z' fill='%23fff'/%3E%3Cpath d='M71 96h50' stroke='%230f766e' stroke-width='8'/%3E%3Ccircle cx='96' cy='96' r='8' fill='%230f766e'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='92' fill='%230f766e'/%3E%3Cpath d='M256 86l122 43v95c0 98-64 161-122 201-58-40-122-103-122-201v-95l122-43z' fill='%23fff'/%3E%3Cpath d='M190 256h132' stroke='%230f766e' stroke-width='22'/%3E%3Ccircle cx='256' cy='256' r='20' fill='%230f766e'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
