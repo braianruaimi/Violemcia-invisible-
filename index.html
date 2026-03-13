@@ -263,6 +263,13 @@
       will-change: transform;
     }
 
+    .acciones-servicio {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
     .tarjeta:hover {
       transform: translateY(-4px);
       border-color: color-mix(in srgb, var(--acento) 35%, var(--borde));
@@ -290,12 +297,6 @@
       margin-top: 18px;
       display: grid;
       gap: 14px;
-    }
-
-    .soporte-grid {
-      display: grid;
-      gap: 18px;
-      margin-top: 24px;
     }
 
     .panel-soporte {
@@ -402,6 +403,11 @@
       font-size: 0.92rem;
     }
 
+    .faq-discreto {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
     .item-confianza {
       background: #fff;
       border: 1px solid var(--borde);
@@ -485,10 +491,49 @@
       border: 0;
     }
 
+    .ia-wrap {
+      position: fixed;
+      left: 14px;
+      bottom: 16px;
+      z-index: 42;
+      display: flex;
+      align-items: end;
+      gap: 10px;
+    }
+
+    .ia-pista {
+      max-width: 150px;
+      padding: 9px 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      color: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(10px);
+      font-size: 0.82rem;
+      line-height: 1.25;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
+    }
+
+    .ia-flotante {
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      border: 0;
+      background: var(--texto);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.24);
+    }
+
+    .ia-flotante:hover {
+      transform: scale(1.04);
+    }
+
     .boton-panel {
       position: fixed;
       left: 10px;
-      bottom: 12px;
+      bottom: 86px;
       z-index: 35;
       padding: 10px 12px;
       border-radius: 999px;
@@ -506,6 +551,50 @@
       color: rgba(15, 23, 42, 0.55);
       border-color: rgba(15, 23, 42, 0.14);
       background: rgba(255, 255, 255, 0.5);
+    }
+
+    .modal-flotante {
+      position: fixed;
+      inset: 0;
+      z-index: 58;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(15, 23, 42, 0.44);
+    }
+
+    .modal-flotante.visible {
+      display: flex;
+    }
+
+    .modal-contenido {
+      width: min(640px, 100%);
+      max-height: min(88vh, 820px);
+      overflow: auto;
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: 22px;
+      box-shadow: 0 22px 56px rgba(15, 23, 42, 0.22);
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .modal-encabezado {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .modal-encabezado h3,
+    .modal-encabezado p {
+      margin: 0;
+    }
+
+    .modal-chat {
+      width: min(460px, 100%);
     }
 
     .panel-ceo {
@@ -677,11 +766,6 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .soporte-grid {
-        grid-template-columns: 0.92fr 1.08fr;
-        align-items: start;
-      }
-
       .campos-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -692,7 +776,8 @@
       .entrada,
       .tarjeta,
       .boton,
-      .wsp-flotante {
+      .wsp-flotante,
+      .ia-flotante {
         animation: none !important;
         transition: none !important;
       }
@@ -701,6 +786,15 @@
     @media (max-width: 420px) {
       .panel-grid {
         grid-template-columns: 1fr;
+      }
+
+      .ia-pista {
+        max-width: 118px;
+        font-size: 0.76rem;
+      }
+
+      .boton-panel {
+        bottom: 82px;
       }
     }
   </style>
@@ -785,7 +879,10 @@
             <span class="etiqueta-precio">$30.000</span>
             <p>Enviás un audio explicando tu situación y recibís el mismo día una guía escrita con lo importante del caso, las pruebas que conviene guardar, qué pedir y pasos concretos para avanzar.</p>
             <p class="pago"><strong>Pago:</strong> 50% al iniciar y 50% al recibir la guía.</p>
-            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio guía">Solicitar guía</a>
+            <div class="acciones-servicio">
+              <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio guía">Solicitar guía</a>
+              <button class="boton boton-secundario boton-acceder" type="button" data-servicio="Guía personalizada">Acceder</button>
+            </div>
           </article>
 
           <article class="tarjeta" aria-labelledby="servicio-entrevista">
@@ -793,15 +890,21 @@
             <span class="etiqueta-precio">$50.000</span>
             <p>Durante 30 minutos analizamos tu situación y definimos prioridades, primeros pasos legales, cómo presentar pedidos y un plan concreto para avanzar.</p>
             <p class="pago"><strong>Pago:</strong> 50% para reservar y 50% al finalizar.</p>
-            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio entrevista">Reservar entrevista</a>
+            <div class="acciones-servicio">
+              <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio entrevista">Reservar entrevista</a>
+              <button class="boton boton-secundario boton-acceder" type="button" data-servicio="Entrevista 1 a 1">Acceder</button>
+            </div>
           </article>
 
           <article class="tarjeta" aria-labelledby="servicio-libro">
-            <h3 id="servicio-libro">Libro digital</h3>
-            <span class="etiqueta-precio">$30.000</span>
-            <p>Un PDF que explica leyes y derechos, patrones de manipulación, tipos de violencia psicológica y cómo actuar sin perjudicar tu posición legal.</p>
-            <p class="pago"><strong>Formato:</strong> entrega digital.</p>
-            <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio libro">Comprar libro</a>
+            <h3 id="servicio-libro">PDF + sesión 1 a 1</h3>
+            <span class="etiqueta-precio">$70.000</span>
+            <p>Incluye el PDF con leyes, derechos, patrones de manipulación y tipos de violencia psicológica, más una sesión 1 a 1 para revisar tu caso y ordenar pasos concretos.</p>
+            <p class="pago"><strong>Formato:</strong> material digital + encuentro personalizado.</p>
+            <div class="acciones-servicio">
+              <a class="boton boton-principal" href="https://wa.me/5492494284798" target="_blank" rel="noopener noreferrer" data-whatsapp-source="Servicio PDF + sesión 1 a 1">Comprar acceso</a>
+              <button class="boton boton-secundario boton-acceder" type="button" data-servicio="PDF + 1 a 1 conmigo">Acceder</button>
+            </div>
           </article>
         </div>
       </div>
@@ -865,68 +968,16 @@
     <section id="reserva" class="fondo-gris" aria-labelledby="titulo-reserva">
       <div class="contenedor">
         <h2 id="titulo-reserva">Orientación automática y reserva directa</h2>
-        <p class="texto-seccion">Podés resolver dudas frecuentes en segundos y, si querés avanzar, completar tu reserva para enviarla directo por WhatsApp con todos los datos necesarios.</p>
+        <p class="texto-seccion">Usá el botón flotante de IA para resolver preguntas frecuentes en segundos. Si querés avanzar con una consulta, podés abrir el acceso de cada servicio o iniciar una reserva general.</p>
 
-        <div class="soporte-grid">
-          <article class="panel-soporte" aria-labelledby="titulo-chat-ia">
-            <h3 id="titulo-chat-ia">Asistente de IA con respuestas frecuentes</h3>
-            <p class="texto-seccion">Elegí una pregunta frecuente y el asistente responderá en base a la información disponible en esta página.</p>
-
-            <div class="faq-lista" aria-label="Preguntas frecuentes automáticas">
-              <button class="faq-boton" type="button" data-faq-key="situacion">No sé si lo que vivo encaja en violencia psicológica o invisible.</button>
-              <button class="faq-boton" type="button" data-faq-key="pruebas">¿Qué pruebas conviene guardar desde ahora?</button>
-              <button class="faq-boton" type="button" data-faq-key="guia">¿Qué incluye la guía personalizada paso a paso?</button>
-              <button class="faq-boton" type="button" data-faq-key="entrevista">¿Qué se define en la entrevista 1 a 1?</button>
-              <button class="faq-boton" type="button" data-faq-key="reserva">¿Cómo reservo y cómo se envía mi información?</button>
-            </div>
-
-            <div class="chat-ventana" id="chat-faq" aria-live="polite">
-              <div class="burbuja ia">Puedo responder preguntas frecuentes sobre la guía, la entrevista, la documentación útil y la forma de reservar. Elegí una opción para empezar.</div>
-            </div>
-          </article>
-
-          <article class="panel-soporte" aria-labelledby="titulo-form-reserva">
-            <h3 id="titulo-form-reserva">Formulario de reserva</h3>
-            <p class="texto-seccion">Completá tus datos y al confirmar se abrirá WhatsApp con el mensaje listo para enviar.</p>
-
-            <form class="reserva-formulario" id="form-reserva">
-              <div class="campos-grid">
-                <div class="campo">
-                  <label for="nombre-apellido">Nombre y apellido</label>
-                  <input id="nombre-apellido" name="nombre" type="text" autocomplete="name" placeholder="Ej.: Ana Pérez">
-                </div>
-                <div class="campo">
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" autocomplete="email" placeholder="Ej.: nombre@email.com">
-                </div>
-                <div class="campo">
-                  <label for="telefono">Número de teléfono</label>
-                  <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="Ej.: 2494 00 0000">
-                </div>
-                <div class="campo">
-                  <label for="servicio-reserva">Quiero reservar</label>
-                  <select id="servicio-reserva" name="servicio">
-                    <option value="">Seleccioná una opción</option>
-                    <option value="Guía personalizada">Guía personalizada</option>
-                    <option value="Entrevista 1 a 1">Entrevista 1 a 1</option>
-                    <option value="PDF + 1 a 1 conmigo">PDF + 1 a 1 conmigo</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="campo">
-                <label for="asunto-caso">Asunto o caso</label>
-                <textarea id="asunto-caso" name="asunto" rows="5" placeholder="Contá brevemente tu situación para llegar a la consulta con mejor contexto."></textarea>
-                <div class="ayuda-campo">Tu resumen se incluirá en el mensaje que se abrirá por WhatsApp.</div>
-              </div>
-
-              <div class="panel-acciones">
-                <button class="boton boton-principal" type="submit">Enviar por WhatsApp</button>
-              </div>
-              <p class="mensaje-formulario" id="mensaje-reserva" aria-live="polite"></p>
-            </form>
-          </article>
-        </div>
+        <article class="panel-soporte" aria-labelledby="titulo-form-reserva">
+          <h3 id="titulo-form-reserva">Reserva general</h3>
+          <p class="texto-seccion">Si todavía no elegiste un servicio, podés abrir el formulario general y enviarlo por WhatsApp con tus datos completos.</p>
+          <div class="panel-acciones">
+            <button class="boton boton-principal boton-acceder" type="button" data-servicio="Reserva general">Acceder</button>
+          </div>
+          <p class="faq-discreto">El asistente IA ahora aparece como botón flotante en la esquina inferior izquierda.</p>
+        </article>
       </div>
     </section>
 
@@ -954,9 +1005,90 @@
     </svg>
   </a>
 
+  <div class="ia-wrap" aria-label="Asistente de IA">
+    <div class="ia-pista">Preguntas frecuentes</div>
+    <button class="boton ia-flotante" type="button" id="abrir-chat-ia" aria-haspopup="dialog" aria-controls="modal-chat-ia" aria-label="Abrir asistente de IA">
+      IA
+    </button>
+  </div>
+
   <button class="boton boton-panel" type="button" id="abrir-panel-ceo" aria-haspopup="dialog" aria-controls="panel-ceo" aria-label="Abrir panel CEO">
     Panel CEO
   </button>
+
+  <div class="modal-flotante" id="modal-reserva" aria-hidden="true">
+    <div class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-reserva">
+      <div class="modal-encabezado">
+        <div>
+          <h3 id="titulo-modal-reserva">Acceso y reserva</h3>
+          <p id="descripcion-modal-reserva">Completá tus datos y enviá la solicitud por WhatsApp.</p>
+        </div>
+        <button class="cerrar-panel" type="button" id="cerrar-modal-reserva" aria-label="Cerrar reserva">×</button>
+      </div>
+
+      <form class="reserva-formulario" id="form-reserva">
+        <div class="campos-grid">
+          <div class="campo">
+            <label for="nombre-apellido">Nombre y apellido</label>
+            <input id="nombre-apellido" name="nombre" type="text" autocomplete="name" placeholder="Ej.: Ana Pérez">
+          </div>
+          <div class="campo">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="Ej.: nombre@email.com">
+          </div>
+          <div class="campo">
+            <label for="telefono">Número de teléfono</label>
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="Ej.: 2494 00 0000">
+          </div>
+          <div class="campo">
+            <label for="servicio-reserva">Quiero reservar</label>
+            <select id="servicio-reserva" name="servicio">
+              <option value="">Seleccioná una opción</option>
+              <option value="Guía personalizada">Guía personalizada</option>
+              <option value="Entrevista 1 a 1">Entrevista 1 a 1</option>
+              <option value="PDF + 1 a 1 conmigo">PDF + 1 a 1 conmigo</option>
+              <option value="Reserva general">Reserva general</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="asunto-caso">Asunto o caso</label>
+          <textarea id="asunto-caso" name="asunto" rows="5" placeholder="Contá brevemente tu situación para llegar a la consulta con mejor contexto."></textarea>
+          <div class="ayuda-campo">Tu resumen se incluirá en el mensaje que se abrirá por WhatsApp.</div>
+        </div>
+
+        <div class="panel-acciones">
+          <button class="boton boton-principal" type="submit">Enviar por WhatsApp</button>
+        </div>
+        <p class="mensaje-formulario" id="mensaje-reserva" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-flotante" id="modal-chat-ia" aria-hidden="true">
+    <div class="modal-contenido modal-chat" role="dialog" aria-modal="true" aria-labelledby="titulo-chat-ia">
+      <div class="modal-encabezado">
+        <div>
+          <h3 id="titulo-chat-ia">Asistente de IA</h3>
+          <p>Preguntas frecuentes basadas en la información de la página.</p>
+        </div>
+        <button class="cerrar-panel" type="button" id="cerrar-chat-ia" aria-label="Cerrar asistente">×</button>
+      </div>
+
+      <div class="faq-lista" aria-label="Preguntas frecuentes automáticas">
+        <button class="faq-boton" type="button" data-faq-key="situacion">No sé si lo que vivo encaja en violencia psicológica o invisible.</button>
+        <button class="faq-boton" type="button" data-faq-key="pruebas">¿Qué pruebas conviene guardar desde ahora?</button>
+        <button class="faq-boton" type="button" data-faq-key="guia">¿Qué incluye la guía personalizada paso a paso?</button>
+        <button class="faq-boton" type="button" data-faq-key="entrevista">¿Qué se define en la entrevista 1 a 1?</button>
+        <button class="faq-boton" type="button" data-faq-key="reserva">¿Cómo reservo y cómo se envía mi información?</button>
+      </div>
+
+      <div class="chat-ventana" id="chat-faq" aria-live="polite">
+        <div class="burbuja ia">Puedo responder preguntas frecuentes sobre la guía, la entrevista, las pruebas útiles y la forma de reservar. Elegí una opción para empezar.</div>
+      </div>
+    </div>
+  </div>
 
   <div class="panel-ceo" id="panel-ceo" aria-hidden="true">
     <div class="panel-ceo-contenido" role="dialog" aria-modal="true" aria-labelledby="panel-ceo-titulo">
@@ -982,8 +1114,16 @@
       <section id="contenido-analytics" hidden>
         <div class="panel-grid">
           <div class="mini-tarjeta">
+            Vistas
+            <strong id="metric-vistas">0</strong>
+          </div>
+          <div class="mini-tarjeta">
             Total de clics
             <strong id="metric-total">0</strong>
+          </div>
+          <div class="mini-tarjeta">
+            Conversión a WhatsApp
+            <strong id="metric-conversion">0%</strong>
           </div>
           <div class="mini-tarjeta">
             Último clic
@@ -1015,14 +1155,23 @@
       var CLAVE_PANEL = "1234";
       var STORAGE_KEY = "violenciaInvisibleAnalytics";
       var whatsappLinks = document.querySelectorAll('a[href="https://wa.me/5492494284798"]');
+      var botonesAcceder = document.querySelectorAll(".boton-acceder");
       var abrirPanel = document.getElementById("abrir-panel-ceo");
       var cerrarPanel = document.getElementById("cerrar-panel-ceo");
       var panel = document.getElementById("panel-ceo");
+      var abrirChatIA = document.getElementById("abrir-chat-ia");
+      var cerrarChatIA = document.getElementById("cerrar-chat-ia");
+      var modalChatIA = document.getElementById("modal-chat-ia");
+      var modalReserva = document.getElementById("modal-reserva");
+      var cerrarModalReserva = document.getElementById("cerrar-modal-reserva");
+      var descripcionModalReserva = document.getElementById("descripcion-modal-reserva");
       var formularioAcceso = document.getElementById("form-acceso-ceo");
       var campoClave = document.getElementById("clave-ceo");
       var mensajeAcceso = document.getElementById("mensaje-acceso");
       var contenidoAnalytics = document.getElementById("contenido-analytics");
+      var vistasEl = document.getElementById("metric-vistas");
       var totalEl = document.getElementById("metric-total");
+      var conversionEl = document.getElementById("metric-conversion");
       var ultimoEl = document.getElementById("metric-ultimo");
       var listaFuentes = document.getElementById("lista-fuentes");
       var listaReciente = document.getElementById("lista-reciente");
@@ -1043,6 +1192,7 @@
 
       function estadoInicial() {
         return {
+          views: 0,
           total: 0,
           sources: {},
           events: []
@@ -1058,6 +1208,7 @@
 
           var datos = JSON.parse(guardado);
           return {
+            views: typeof datos.views === "number" ? datos.views : 0,
             total: typeof datos.total === "number" ? datos.total : 0,
             sources: datos.sources && typeof datos.sources === "object" ? datos.sources : {},
             events: Array.isArray(datos.events) ? datos.events : []
@@ -1084,7 +1235,11 @@
 
       function renderizarAnalytics() {
         var analytics = leerAnalytics();
+        var conversion = analytics.views > 0 ? (analytics.total / analytics.views) * 100 : 0;
+
+        vistasEl.textContent = String(analytics.views);
         totalEl.textContent = String(analytics.total);
+        conversionEl.textContent = conversion.toFixed(1).replace(".0", "") + "%";
 
         if (analytics.events.length > 0) {
           ultimoEl.textContent = formatearFecha(analytics.events[0].at);
@@ -1142,13 +1297,28 @@
         chatFaq.scrollTop = chatFaq.scrollHeight;
       }
 
+      function registrarVista() {
+        var analytics = leerAnalytics();
+        analytics.views += 1;
+        guardarAnalytics(analytics);
+      }
+
       function validarTexto(valor) {
         return String(valor || "").trim();
       }
 
+      function abrirModal(modal) {
+        modal.classList.add("visible");
+        modal.setAttribute("aria-hidden", "false");
+      }
+
+      function cerrarModal(modal) {
+        modal.classList.remove("visible");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
       function abrirDialogo() {
-        panel.classList.add("visible");
-        panel.setAttribute("aria-hidden", "false");
+        abrirModal(panel);
         mensajeAcceso.textContent = "";
         campoClave.value = "";
         contenidoAnalytics.hidden = true;
@@ -1159,13 +1329,34 @@
       }
 
       function cerrarDialogo() {
-        panel.classList.remove("visible");
-        panel.setAttribute("aria-hidden", "true");
+        cerrarModal(panel);
       }
+
+      function abrirReserva(servicio) {
+        var servicioInput = document.getElementById("servicio-reserva");
+
+        servicioInput.value = servicio || "";
+        descripcionModalReserva.textContent = servicio
+          ? "Completá tus datos para acceder a " + servicio + " y enviá la solicitud por WhatsApp."
+          : "Completá tus datos y enviá la solicitud por WhatsApp.";
+        mensajeReserva.textContent = "";
+        abrirModal(modalReserva);
+        window.setTimeout(function () {
+          document.getElementById("nombre-apellido").focus();
+        }, 40);
+      }
+
+      registrarVista();
 
       whatsappLinks.forEach(function (link) {
         link.addEventListener("click", function () {
           registrarClickWhatsApp(link.dataset.whatsappSource || link.getAttribute("aria-label") || "WhatsApp");
+        });
+      });
+
+      botonesAcceder.forEach(function (boton) {
+        boton.addEventListener("click", function () {
+          abrirReserva(boton.dataset.servicio || "");
         });
       });
 
@@ -1181,6 +1372,15 @@
 
       abrirPanel.addEventListener("click", abrirDialogo);
       cerrarPanel.addEventListener("click", cerrarDialogo);
+      abrirChatIA.addEventListener("click", function () {
+        abrirModal(modalChatIA);
+      });
+      cerrarChatIA.addEventListener("click", function () {
+        cerrarModal(modalChatIA);
+      });
+      cerrarModalReserva.addEventListener("click", function () {
+        cerrarModal(modalReserva);
+      });
 
       panel.addEventListener("click", function (evento) {
         if (evento.target === panel) {
@@ -1188,9 +1388,29 @@
         }
       });
 
+      modalChatIA.addEventListener("click", function (evento) {
+        if (evento.target === modalChatIA) {
+          cerrarModal(modalChatIA);
+        }
+      });
+
+      modalReserva.addEventListener("click", function (evento) {
+        if (evento.target === modalReserva) {
+          cerrarModal(modalReserva);
+        }
+      });
+
       document.addEventListener("keydown", function (evento) {
         if (evento.key === "Escape" && panel.classList.contains("visible")) {
           cerrarDialogo();
+        }
+
+        if (evento.key === "Escape" && modalChatIA.classList.contains("visible")) {
+          cerrarModal(modalChatIA);
+        }
+
+        if (evento.key === "Escape" && modalReserva.classList.contains("visible")) {
+          cerrarModal(modalReserva);
         }
       });
 
@@ -1223,7 +1443,19 @@
       });
 
       botonReiniciar.addEventListener("click", function () {
+        var clave = window.prompt("Ingresá la contraseña para confirmar la limpieza de métricas:");
+
+        if (clave === null) {
+          return;
+        }
+
+        if (clave !== CLAVE_PANEL) {
+          window.alert("Contraseña incorrecta.");
+          return;
+        }
+
         localStorage.removeItem(STORAGE_KEY);
+        registrarVista();
         renderizarAnalytics();
       });
 
@@ -1255,6 +1487,7 @@
 
         registrarClickWhatsApp("Formulario reserva");
         window.open(baseWhatsApp + encodeURIComponent(mensaje), "_blank", "noopener,noreferrer");
+        cerrarModal(modalReserva);
       });
     })();
 
